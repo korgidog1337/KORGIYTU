@@ -1,7 +1,7 @@
 :root {
-  --bg: #0a0a0a;
-  --text: #e0e0e0;
-  --accent: #b8a985; /* тёплый серо-золотистый для незерита */
+  --bg: #000;
+  --text: #f0f0f0;
+  --accent: #c5b358; /* золотисто-серый для ссылок */
 }
 
 * {
@@ -13,14 +13,12 @@
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Courier New', monospace, sans-serif;
-  overflow: hidden;
+  font-family: 'Segoe UI', 'Courier New', monospace;
   height: 100vh;
+  overflow: hidden;
   position: relative;
-  cursor: default;
 }
 
-/* Частицы на фоне */
 canvas#particles {
   position: absolute;
   top: 0;
@@ -30,91 +28,36 @@ canvas#particles {
   z-index: -1;
 }
 
-/* Центральный контейнер */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  font-size: 24px;
+  line-height: 1.8;
+  max-width: 600px;
   padding: 0 20px;
-  z-index: 10;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
-/* Фото собаки */
-.dog {
-  width: 240px;
-  height: auto;
-  border-radius: 50%;
-  filter: grayscale(100%) contrast(1.1) brightness(0.95);
-  box-shadow: 0 0 30px rgba(184, 169, 133, 0.4);
-  animation: float 6s ease-in-out infinite;
-  margin-bottom: 30px;
+.centered-text a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.3s;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-/* Майнкрафт-предметы */
-.items {
-  display: flex;
-  gap: 40px;
-  margin: 20px 0;
-}
-
-.item {
-  width: 80px;
-  height: auto;
-  filter: grayscale(100%) brightness(1.2);
-  transition: transform 0.3s ease;
-}
-
-.item:hover {
-  transform: scale(1.2) rotate(5deg);
-}
-
-/* Текст */
-h1 {
-  font-size: 28px;
-  margin-top: 20px;
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px rgba(184, 169, 133, 0.6);
-}
-
-.subtitle {
-  font-size: 16px;
-  margin-top: 10px;
-  opacity: 0.7;
-  font-style: italic;
-}
-
-/* Скрытие аудио-элемента */
-audio {
-  display: none;
+.centered-text a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
 }
 
 /* Адаптивность */
 @media (max-width: 600px) {
-  .dog {
-    width: 180px;
-  }
-
-  .items {
-    gap: 25px;
-  }
-
-  .item {
-    width: 60px;
-  }
-
-  h1 {
-    font-size: 22px;
-  }
-
-  .subtitle {
-    font-size: 14px;
+  .centered-text {
+    font-size: 20px;
+    padding: 0 15px;
   }
 }
